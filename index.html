@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovish Pandey | Senior Mobile Application Engineer</title>
+    <!-- Modern Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4f46e5; /* Modern Indigo */
+            --primary-hover: #4338ca;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-light: #475569;
+            --border-radius: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 2px;
+            background-color: #e2e8f0;
+            flex-grow: 1;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Tech Badges */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            background-color: #e0e7ff;
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Grid & Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f1f5f9;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #e0e7ff;
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #f1f5f9;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-main);
+        }
+
+        .card .focus-area {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+
+        ul {
+            list-style-type: none;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.875rem;
+        }
+
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .card-action {
+            display: block;
+            text-align: center;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.875rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .card-action:hover {
+            background-color: var(--primary-hover);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-light);
+            background-color: var(--card-bg);
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .container { padding: 3rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-content">
+            <h1>Lovish Pandey</h1>
+            <h2>Senior Mobile Application Engineer</h2>
+            <p>Delivering high-performance, scalable, and user-centric mobile applications with 6.5 years of specialized engineering experience.</p>
+            <a href="mailto:lovish.ku@gmail.com" class="btn btn-primary">Get in touch</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="about">
+            <h2 class="section-title">Professional Summary</h2>
+            <p>I excel at turning complex business requirements into seamless digital experiences. Whether it involves architecting a greenfield application from the ground up, refactoring legacy codebases for modern performance standards, or adapting applications across diverse operating systems (including standard mobile and specialized automotive environments), I bring a robust, problem-solving mindset to every project.</p>
+            
+            <div class="badge-container" style="margin-top: 1.5rem;">
+                <span class="badge">Jetpack Compose</span>
+                <span class="badge">Kotlin Coroutines & Flow</span>
+                <span class="badge">Hilt & Dagger</span>
+                <span class="badge">Clean Architecture</span>
+                <span class="badge">Android Auto & WearOS</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="grid">
+                
+                <!-- Project 1: ActivBharat -->
+                <div class="card">
+                    <img src="activbharat.jpg" alt="ActivBharat App Interface" onerror="this.src='https://via.placeholder.com/600x400/f8fafc/475569?text=ActivBharat+Screenshot'">
+                    
+                    <h3>ActivBharat</h3>
+                    <span class="focus-area">End-to-End Development, Architecture, & Publishing</span>
+                    <p>Architected and developed this comprehensive fitness and marathon booking application entirely from scratch, handling everything from the initial codebase setup to final store publication.</p>
+                    <ul>
+                        <li><strong>Health Tech Integration:</strong> Implemented the Google Health Connect API for seamless, real-time health data synchronization.</li>
+                        <li><strong>User Experience:</strong> Designed and built smooth onboarding flows and interactive video training modules.</li>
+                        <li><strong>Monetization:</strong> Integrated secure payment gateways to handle event bookings and user transactions.</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.enil.activbharat&hl=en_IN" target="_blank" class="card-action">View on Google Play</a>
+                </div>
+
+                <!-- Project 2: Gaana -->
+                <div class="card">
+                    <img src="gaana.jpg" alt="Gaana App Interface" onerror="this.src='https://via.placeholder.com/600x400/f8fafc/475569?text=Gaana+Screenshot'">
+                    
+                    <h3>Gaana</h3>
+                    <span class="focus-area">Multi-Platform (Auto & WearOS), Refactoring, & Scaling</span>
+                    <p>Contributed core technical improvements to a major audio streaming platform with millions of active users, proving the ability to jump into large codebases and expand their reach.</p>
+                    <ul>
+                        <li><strong>Cross-Platform Development:</strong> Spearheaded the development and adaptation of the Gaana experience for Android Auto and WearOS, extending seamless audio streaming to vehicles and smartwatches.</li>
+                        <li><strong>Audio Engineering:</strong> Developed and integrated audio normalization features to ensure consistent playback quality across diverse content.</li>
+                        <li><strong>Refactoring:</strong> Optimized and refactored referral program payment flows and checkout sequences, directly improving conversion reliability.</li>
+                    </ul>
+                    <a href="https://play.google.com/store/search?q=gaana+app&c=apps&hl=en_IN" target="_blank" class="card-action">View on Google Play</a>
+                </div>
+
+                <!-- Project 3: Automotive OS -->
+                <div class="card">
+                    <img src="gaana.jpg" alt="Gaana App Interface" onerror="this.src='https://via.placeholder.com/600x400/f8fafc/475569?text=Gaana+Screenshot'">
+                    
+                    <h3>Automotive OEM Software</h3>
+                    <span class="focus-area">Multiple OS Environments & Deep Debugging</span>
+                    <p>Developed and maintained specialized automotive software applications utilized by major OEMs like Mahindra.</p>
+                    <ul>
+                        <li><strong>OS Adaptability:</strong> Successfully adapted standard mobile application paradigms to function flawlessly within specialized in-vehicle operating systems.</li>
+                        <li><strong>System Stability:</strong> Conducted deep-dive debugging and performance auditing, resolving over 50 complex technical bugs within the automotive software ecosystem to ensure driver safety and software reliability.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="services">
+            <h2 class="section-title">Freelance & Contract Capabilities</h2>
+            <div class="grid" style="grid-template-columns: 1fr;">
+                <div class="card" style="box-shadow: none; border-color: transparent; background: transparent; padding: 0;">
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>Greenfield App Development:</strong> Complete architecture, development, and publishing for new app ideas, utilizing modern best practices (Jetpack Compose, Clean Architecture).</li>
+                        <li><strong>Codebase Rescue & Refactoring:</strong> Upgrading older codebases to modern standards, eliminating tech debt, resolving legacy crashes, and improving overall app responsiveness.</li>
+                        <li><strong>Cross-Device Scaling:</strong> Expanding standard mobile apps into specialized ecosystems, including Android Auto, WearOS, and embedded automotive environments.</li>
+                        <li><strong>Complex API Integrations:</strong> Seamlessly adding intricate features like secure payment gateways, media streaming architectures, and hardware/health sensor syncing.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Lovish Pandey. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
