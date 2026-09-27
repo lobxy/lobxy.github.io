@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lovish Pandey | Senior Mobile Application Engineer</title>
-    <!-- Modern Font: Inter -->
+    <title>Lovish Pandey - Senior Android Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
         :root {
-            --primary: #4f46e5; /* Modern Indigo */
-            --primary-hover: #4338ca;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-light: #475569;
-            --border-radius: 16px;
-            --transition: all 0.3s ease;
+            --bg-color: #ffffff;
+            --surface-color: #f8fafc;
+            --surface-alt: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-light: #64748b;
+            --accent-dark: #1e293b;
+            --accent-green: #047857;
+            --border-color: #e2e8f0;
+            --radius-md: 12px;
+            --radius-lg: 24px;
         }
 
         * {
@@ -26,315 +27,632 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Hero Section */
-        header {
-            background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 100%);
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        header h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        header h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            margin-bottom: 2.5rem:
-            color: white;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.875rem 1.75rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: white;
-            color: var(--primary);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            color: var(--text-primary);
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 0 2rem;
         }
 
-        .section-title {
-            font-size: 2rem;
+        /* --- Icons --- */
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .icon-sm { width: 16px; height: 16px; }
+        .icon-md { width: 20px; height: 20px; }
+        .icon-lg { width: 32px; height: 32px; }
+        .icon-gap-r { margin-right: 0.5rem; }
+        .icon-gap-l { margin-left: 0.5rem; }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .logo {
             font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--text-main);
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .btn-nav {
+            background-color: var(--accent-dark);
+            color: white !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 99px;
             display: flex;
             align-items: center;
-            gap: 1rem;
         }
 
-        .section-title::after {
-            content: "";
-            height: 2px;
-            background-color: #e2e8f0;
-            flex-grow: 1;
+        /* --- Hero Section --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 4rem 0 6rem;
+            align-items: center;
         }
 
-        section {
-            margin-bottom: 5rem;
+        .hero-left h4 {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
 
-        p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
+        .hero-left h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
         }
 
-        /* Tech Badges */
-        .badge-container {
+        .hero-left h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
             margin-bottom: 1.5rem;
         }
 
         .badge {
-            background-color: #e0e7ff;
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--surface-color);
+            color: var(--text-secondary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
         }
 
-        /* Grid & Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+        .hero-left p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 90%;
+            margin-bottom: 2.5rem;
         }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border: 1px solid #f1f5f9;
-            transition: var(--transition);
+        .hero-actions {
             display: flex;
-            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: #e0e7ff;
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.2s;
         }
 
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border: 1px solid #f1f5f9;
+        .btn-primary:hover {
+            opacity: 0.9;
         }
 
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
-            color: var(--text-main);
+        .btn-secondary {
+            background-color: white;
+            color: var(--text-primary);
+            padding: 0.75rem 1.25rem;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
         }
 
-        .card .focus-area {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-            display: block;
-        }
-
-        ul {
-            list-style-type: none;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-
-        li {
+        .hero-right {
             position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.875rem;
+            display: flex;
+            justify-content: center;
         }
 
-        li::before {
-            content: "→";
+        .hero-right img.hero-img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: var(--radius-lg);
+            background-color: var(--surface-alt); 
+        }
+
+        /* --- Featured Project --- */
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-label::before {
+            content: "";
+            width: 12px;
+            height: 2px;
+            background-color: var(--text-light);
+        }
+
+        .featured-card {
+            background-color: var(--surface-color);
+            border-radius: var(--radius-lg);
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .featured-content h3 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-content h4 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .featured-image img {
+            width: 100%;
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Four Column Details Grid --- */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 6rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .detail-item h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .detail-item ul {
+            list-style: none;
+        }
+
+        .detail-item ul li {
+            position: relative;
+            padding-left: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .detail-item ul li::before {
+            content: "•";
             position: absolute;
             left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .card-action {
-            display: block;
-            text-align: center;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            padding: 0.875rem 1rem;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: var(--transition);
-            margin-top: auto;
-        }
-
-        .card-action:hover {
-            background-color: var(--primary-hover);
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
             color: var(--text-light);
-            background-color: var(--card-bg);
-            border-top: 1px solid #e2e8f0;
-            font-size: 0.95rem;
         }
 
-        /* Responsive */
+        /* --- Bottom Split Sections --- */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .expertise-item h5 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .expertise-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding-left: 1.75rem;
+        }
+
+        /* --- Experience & About --- */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .timeline-item {
+            font-size: 0.9rem;
+        }
+
+        .timeline-item h5 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-link {
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--accent-dark);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-left h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .footer-left p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero, .featured-card, .split-section {
+                grid-template-columns: 1fr;
+            }
+            .hero-right { order: -1; }
+            .details-grid { grid-template-columns: 1fr 1fr; }
+        }
         @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            .container { padding: 3rem 1.5rem; }
+            .details-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .hero-left h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="hero-content">
-            <h1>Lovish Pandey</h1>
-            <h2>Senior Mobile Application Engineer</h2>
-            <p>Delivering high-performance, scalable, and user-centric mobile applications with 6.5 years of specialized engineering experience.</p>
-            <a href="mailto:lovish.ku@gmail.com" class="btn btn-primary">Get in touch</a>
-        </div>
-    </header>
-
     <div class="container">
-        
-        <section id="about">
-            <h2 class="section-title">Professional Summary</h2>
-            <p>I excel at turning complex business requirements into seamless digital experiences. Whether it involves architecting a greenfield application from the ground up, refactoring legacy codebases for modern performance standards, or adapting applications across diverse operating systems (including standard mobile and specialized automotive environments), I bring a robust, problem-solving mindset to every project.</p>
-            
-            <div class="badge-container" style="margin-top: 1.5rem;">
-                <span class="badge">Jetpack Compose</span>
-                <span class="badge">Kotlin Coroutines & Flow</span>
-                <span class="badge">Hilt & Dagger</span>
-                <span class="badge">Clean Architecture</span>
-                <span class="badge">Android Auto & WearOS</span>
+        <!-- Navigation -->
+        <nav>
+            <a href="#" class="logo">Lovish Pandey</a>
+            <div class="nav-links">
+                <a href="#projects">Projects</a>
+                <a href="#tech-stack">Tech Stack</a>
+                <a href="#experience">Experience</a>
+                <a href="#about">About</a>
+                <a href="mailto:your.email@example.com" class="btn-nav">Contact <img src="assets/arrow-right.svg" alt="arrow" class="icon icon-sm icon-gap-l" style="filter: brightness(0) invert(1);"></a>
             </div>
-        </section>
+        </nav>
 
-        <section id="projects">
-            <h2 class="section-title">Featured Work</h2>
-            <div class="grid">
-                
-                <!-- Project 1: ActivBharat -->
-                <div class="card">
-                    <img src="activbharat.png" alt="ActivBharat App Interface" onerror="this.src='https://via.placeholder.com/600x400/f8fafc/475569?text=ActivBharat+Screenshot'">
+        <main>
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-left">
+                    <h4>Hi, I'm</h4>
+                    <h1>Lovish Pandey</h1>
+                    <h2>Senior Android Engineer</h2>
                     
-                    <h3>ActivBharat</h3>
-                    <span class="focus-area">End-to-End Development, Architecture, & Publishing</span>
-                    <p>Architected and developed this comprehensive fitness and marathon booking application entirely from scratch, handling everything from the initial codebase setup to final store publication.</p>
-                    <ul>
-                        <li><strong>Health Tech Integration:</strong> Implemented the Google Health Connect API for seamless, real-time health data synchronization.</li>
-                        <li><strong>User Experience:</strong> Designed and built smooth onboarding flows and interactive video training modules.</li>
-                        <li><strong>Monetization:</strong> Integrated secure payment gateways to handle event bookings and user transactions.</li>
-                    </ul>
-                    <a href="https://play.google.com/store/apps/details?id=com.enil.activbharat&hl=en_IN" target="_blank" class="card-action">View on Google Play</a>
+                    <div class="badges">
+                        <span class="badge"><img src="assets/calendar.svg" alt="years" class="icon icon-sm"> 6.5+ years</span>
+                        <span class="badge"><img src="assets/code.svg" alt="code" class="icon icon-sm"> Android</span>
+                        <span class="badge"><img src="assets/kotlin.svg" alt="kotlin" class="icon icon-sm"> Kotlin</span>
+                        <span class="badge"><img src="assets/car.svg" alt="automotive" class="icon icon-sm"> Automotive</span>
+                        <span class="badge"><img src="assets/music.svg" alt="media" class="icon icon-sm"> Media</span>
+                    </div>
+
+                    <!-- Description built to match the provided source reference -->
+                    <p>I build scalable, high-performance Android applications with a focus on clean architecture, great user experiences and real-world impact.</p>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn-primary">View My Projects <img src="assets/arrow-right.svg" alt="arrow" class="icon icon-sm icon-gap-l" style="filter: brightness(0) invert(1);"></a>
+                        <a href="https://github.com/lobxy" class="btn-secondary" target="_blank"><img src="assets/github.svg" alt="github" class="icon icon-sm icon-gap-r"> GitHub</a>
+                        <a href="https://www.linkedin.com/in/lovish-pandey-9aa9b5137/" class="btn-secondary"><img src="assets/linkedin.svg" alt="linkedin" class="icon icon-sm icon-gap-r"> LinkedIn</a>
+                    </div>
                 </div>
+                <div class="hero-right">
+                    <img src="assets/hero.png" alt="App Showcase" class="hero-img" onerror="this.src='https://via.placeholder.com/500x600/f1f5f9/94a3b8?text=Hero+Image+Mockup'">
+                </div>
+            </section>
 
-                <!-- Project 2: Gaana -->
-                <div class="card">
-                    <img src="gaana.png" alt="Gaana App Interface" onerror="this.src='https://via.placeholder.com/600x400/f8fafc/475569?text=Gaana+Screenshot'">
-                    
+            <!-- Featured Project 1: Gaana -->
+            <div class="section-label" id="projects">Featured Project</div>
+            <section class="featured-card">
+                <div class="featured-content">
                     <h3>Gaana</h3>
-                    <span class="focus-area">Multi-Platform (Auto & WearOS), Refactoring, & Scaling</span>
-                    <p>Contributed core technical improvements to a major audio streaming platform with millions of active users, proving the ability to jump into large codebases and expand their reach.</p>
-                    <ul>
-                        <li><strong>Cross-Platform Development:</strong> Spearheaded the development and adaptation of the Gaana experience for Android Auto and WearOS, extending seamless audio streaming to vehicles and smartwatches.</li>
-                        <li><strong>Audio Engineering:</strong> Developed and integrated audio normalization features to ensure consistent playback quality across diverse content.</li>
-                        <li><strong>Refactoring:</strong> Optimized and refactored referral program payment flows and checkout sequences, directly improving conversion reliability.</li>
-                    </ul>
-                    <a href="https://play.google.com/store/search?q=gaana+app&c=apps&hl=en_IN" target="_blank" class="card-action">View on Google Play</a>
-                </div>
-
-                <!-- Project 3: Automotive OS -->
-                <div class="card">
-                    <img src="gaana.png" alt="Gaana App Interface" onerror="this.src='https://via.placeholder.com/600x400/f8fafc/475569?text=Gaana+Screenshot'">
+                    <h4>Modular Android Auto and Android Automotive application for multiple OEMs</h4>
+                    <p>Built a scalable Android Automotive and Android Auto app that brings Gaana's music experience to cars, supporting multiple OEMs with a modular architecture.</p>
                     
-                    <h3>Automotive OEM Software</h3>
-                    <span class="focus-area">Multiple OS Environments & Deep Debugging</span>
-                    <p>Developed and maintained specialized automotive software applications utilized by major OEMs like Mahindra, Tata and Visteon.</p>
+                    <div class="badges" style="margin-bottom: 2.5rem;">
+                        <span class="badge">AAOS</span>
+                        <span class="badge"><img src="assets/android-auto.svg" alt="auto" class="icon icon-sm"> Android Auto</span>
+                        <span class="badge"><img src="assets/media-session.svg" alt="media" class="icon icon-sm"> MediaSession</span>
+                        <span class="badge"><img src="assets/car-app-library.svg" alt="car library" class="icon icon-sm"> Car App Library</span>
+                        <span class="badge"><img src="assets/kotlin.svg" alt="kotlin" class="icon icon-sm"> Kotlin</span>
+                    </div>
+
+                    <a href="https://play.google.com/store/search?q=gaana+app&c=apps&hl=en_IN" target="_blank" class="btn-primary" style="display: inline-flex;">View Case Study <img src="assets/arrow-right.svg" alt="arrow" class="icon icon-sm icon-gap-l" style="filter: brightness(0) invert(1);"></a>
+                </div>
+                <div class="featured-image">
+                    <img src="assets/gaana.png" alt="Gaana Automotive UI" onerror="this.src='https://via.placeholder.com/600x400/e2e8f0/64748b?text=Gaana+Screenshot'">
+                </div>
+            </section>
+
+            <!-- Case Study Grid for Gaana 
+            <section class="details-grid">
+                <div class="detail-item">
+                    <h5><img src="target.svg" alt="Problem" class="icon icon-md icon-gap-r"> The Problem</h5>
                     <ul>
-                        <li><strong>OS Adaptability:</strong> Successfully adapted standard mobile application paradigms to function flawlessly within specialized in-vehicle operating systems.</li>
-                        <li><strong>System Stability:</strong> Conducted deep-dive debugging and performance auditing, resolving over 50 complex technical bugs within the automotive software ecosystem to ensure driver safety and software reliability.</li>
+                        <li>Support multiple OEMs with different car infotainment systems.</li>
+                        <li>Handle media playback, audio focus and vehicle restrictions.</li>
                     </ul>
                 </div>
-
-            </div>
-        </section>
-
-        <section id="services">
-            <h2 class="section-title">Freelance & Contract Capabilities</h2>
-            <div class="grid" style="grid-template-columns: 1fr;">
-                <div class="card" style="box-shadow: none; border-color: transparent; background: transparent; padding: 0;">
-                    <ul style="margin-bottom: 0;">
-                        <li><strong>Greenfield App Development:</strong> Complete architecture, development, and publishing for new app ideas, utilizing modern best practices (Jetpack Compose, Clean Architecture).</li>
-                        <li><strong>Codebase Rescue & Refactoring:</strong> Upgrading older codebases to modern standards, eliminating tech debt, resolving legacy crashes, and improving overall app responsiveness.</li>
-                        <li><strong>Cross-Device Scaling:</strong> Expanding standard mobile apps into specialized ecosystems, including Android Auto, WearOS, and embedded automotive environments.</li>
-                        <li><strong>Complex API Integrations:</strong> Seamlessly adding intricate features like secure payment gateways, media streaming architectures, and hardware/health sensor syncing.</li>
+                <div class="detail-item">
+                    <h5><img src="lightbulb.svg" alt="Solution" class="icon icon-md icon-gap-r"> My Solution</h5>
+                    <ul>
+                        <li>Designed a modular app architecture for easy OEM integration.</li>
+                        <li>Implemented media service using MediaBrowserServiceCompat.</li>
+                        <li>Handled CarUXRestrictions and audio focus scenarios.</li>
                     </ul>
                 </div>
-            </div>
-        </section>
+                <div class="detail-item">
+                    <h5><img src="settings.svg" alt="Technical" class="icon icon-md icon-gap-r"> Technical Approach</h5>
+                    <ul>
+                        <li>MediaBrowserServiceCompat + MediaSessionCompat.</li>
+                        <li>Modular base layer with feature modules.</li>
+                        <li>Clean architecture with Kotlin + MVVM.</li>
+                    </ul>
+                </div>
+                <div class="detail-item">
+                    <h5><img src="chart.svg" alt="Impact" class="icon icon-md icon-gap-r"> Impact</h5>
+                    <ul>
+                        <li>Seamless experience across multiple OEMs (Thar Roxx, M210, M110, Bolero).</li>
+                        <li>Improved stability and maintainability of the codebase.</li>
+                        <li>Scalable foundation for future features.</li>
+                    </ul>
+                </div>
+            </section>-->
 
+            <!-- Featured Project 2: ActivBharat -->
+            <section class="featured-card">
+                <div class="featured-content">
+                    <h3>ActivBharat</h3>
+                    <h4>End-to-End Development, Architecture, & Publishing</h4>
+                    <p>Architected and developed this comprehensive fitness and marathon booking application entirely from scratch, handling everything from the initial codebase setup to final Play Store publication.</p>
+                    
+                    <div class="badges" style="margin-bottom: 2.5rem;">
+                        <span class="badge"><img src="assets/android.svg" alt="android" class="icon icon-sm"> Health Connect</span>
+                        <span class="badge"><img src="assets/code.svg" alt="compose" class="icon icon-sm"> Jetpack Compose</span>
+                        <span class="badge"><img src="assets/kotlin.svg" alt="kotlin" class="icon icon-sm"> Kotlin</span>
+                        <span class="badge"><img src="assets/target.svg" alt="payments" class="icon icon-sm"> Secure Payments</span>
+                    </div>
+
+                    <a href="https://play.google.com/store/apps/details?id=com.enil.activbharat&hl=en_IN" target="_blank" class="btn-primary" style="display: inline-flex;">View on Google Play <img src="assets/arrow-right.svg" alt="arrow" class="icon icon-sm icon-gap-l" style="filter: brightness(0) invert(1);"></a>
+                </div>
+                <div class="featured-image">
+                    <img src="assets/activbharat.png" alt="ActivBharat UI" onerror="this.src='https://via.placeholder.com/600x400/e2e8f0/64748b?text=ActivBharat+Screenshot'">
+                </div>
+            </section>
+
+            <!-- Bottom Data Sections -->
+            <div class="split-section" id="tech-stack" style="margin-top: 6rem; border-top: 1px solid var(--border-color); padding-top: 4rem;">
+                <!-- Highlights -->
+                <div>
+                    <div class="section-label">Engineering Highlights</div>
+                    <div class="stats-grid" style="margin-top: 2rem;">
+    				<div class="stat-item">
+     				   <h3>40%</h3>
+      					  <p>Faster builds<br>Gradle optimization</p>
+    				</div>
+    				<div class="stat-item">
+       					<h3>37%</h3>
+        				<p>Smaller APK<br>ProGuard & R8 Analysis</p>
+    				</div>
+    				<div class="stat-item">
+      			  		<h4>Multi-OEM</h4>
+       					<p>Architecture<br>Automotive platform</p>
+    				</div>
+    				<div class="stat-item">
+        				<h4>Full Revamps</h4>
+       					<p>Modernization<br>Legacy codebases</p>
+   					</div>
+				</div>
+                </div>
+
+                <!-- Expertise -->
+                <div>
+                    <div class="section-label">Technical Expertise</div>
+                    <div class="expertise-grid" style="margin-top: 2rem;">
+                        <div class="expertise-item">
+                            <div>
+                                <h5><img src="assets/android.svg" alt="Android" class="icon icon-md icon-gap-r"> Android</h5>
+                                <p>Kotlin, Java, Jetpack Compose, Android SDK</p>
+                            </div>
+                        </div>
+                        <div class="expertise-item">
+                            <div>
+                                <h5><img src="assets/car.svg" alt="Automotive" class="icon icon-md icon-gap-r"> Automotive</h5>
+                                <p>AAOS, Car App Library, Android Auto</p>
+                            </div>
+                        </div>
+                        <div class="expertise-item">
+                            <div>
+                                <h5><img src="assets/layers.svg" alt="Architecture" class="icon icon-md icon-gap-r"> Architecture</h5>
+                                <p>MVVM, Clean Architecture, Modularization</p>
+                            </div>
+                        </div>
+                        <div class="expertise-item">
+                            <div>
+                                <h5><img src="assets/code.svg" alt="Engineering" class="icon icon-md icon-gap-r"> Engineering</h5>
+                                <p>Gradle, Git, CI/CD, Firebase, Crashlytics</p>
+                            </div>
+                        </div>
+                        <div class="expertise-item">
+                            <div>
+                                <h5><img src="assets/music.svg" alt="Media" class="icon icon-md icon-gap-r"> Media</h5>
+                                <p>Media3 and ExoPlayer</p>
+                            </div>
+                        </div>
+                        <div class="expertise-item">
+                            <div>
+                                <h5><img src="assets/link.svg" alt="Integrations" class="icon icon-md icon-gap-r"> Integrations</h5>
+                                <p>REST APIs, Analytics, Third-party SDKs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience & About -->
+            <div class="split-section" id="experience">
+                <!-- Experience -->
+                <div>
+                    <div class="section-label">Experience</div>
+                    <p style="margin-top: 1.5rem; font-weight: 500;">7 years of building Android applications</p>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>Gaana</h5>
+                            <p>Senior Android Engineer<br>(2022 - Present)</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>RipenApps Technologies</h5>
+                            <p>Senior Android Developer<br>(2019 - 2022)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div id="about">
+                    <div class="section-label">About Me</div>
+                    <div style="margin-top: 1.5rem;">
+                        <p class="about-text">I enjoy solving challenging problems, collaborating across teams and learning new technologies. I care about clean code, performance and building products that users love.</p>
+                        <a href="mailto:your.email@example.com" class="contact-link">Let's connect <img src="assets/arrow-right.svg" alt="arrow" class="icon icon-sm icon-gap-l"></a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
     </div>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Lovish Pandey. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>Lovish Pandey</h3>
+                <p>Android Developer | 7 Years | Building for a better tomorrow</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/lobxy" style="color: white; text-decoration: none; margin-left: 1rem; display: flex; align-items: center;"><img src="assets/github.svg" alt="github" class="icon icon-sm icon-gap-r" style="filter: brightness(0) invert(1);"> GitHub</a>
+            </div>
+        </div>
     </footer>
 
 </body>
