@@ -93,24 +93,27 @@
             border-radius: 99px;
             display: flex;
             align-items: center;
+            white-space: nowrap;
         }
 
         /* --- Hero Section --- */
         .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            padding: 4rem 0 6rem;
+            padding: 4.5rem 0 6rem; /* Reduced top padding by 25% (from 6rem to 4.5rem) */
+            margin: 0 auto;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
         }
-
-        .hero-left h4 {
+        
+        .hero h4 {
             color: var(--text-secondary);
             font-weight: 500;
             margin-bottom: 0.5rem;
         }
 
-        .hero-left h1 {
+        .hero h1 {
             font-size: 4rem;
             font-weight: 700;
             line-height: 1.1;
@@ -118,18 +121,20 @@
             margin-bottom: 0.5rem;
         }
 
-        .hero-left h2 {
+        .hero h2 {
             font-size: 1.5rem;
             font-weight: 400;
             color: var(--text-secondary);
             margin-bottom: 2rem;
         }
 
+        /* Center the badges in hero */
         .badges {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
             margin-bottom: 1.5rem;
+            justify-content: center; 
         }
 
         .badge {
@@ -145,7 +150,7 @@
             border: 1px solid var(--border-color);
         }
 
-        .hero-left p {
+        .hero p {
             font-size: 1.1rem;
             color: var(--text-secondary);
             max-width: 90%;
@@ -154,8 +159,10 @@
 
         .hero-actions {
             display: flex;
+            flex-wrap: wrap;
             gap: 1rem;
             align-items: center;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -168,6 +175,7 @@
             display: flex;
             align-items: center;
             transition: opacity 0.2s;
+            white-space: nowrap;
         }
 
         .btn-primary:hover {
@@ -184,23 +192,10 @@
             border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
+            white-space: nowrap;
         }
 
-        .hero-right {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-right img.hero-img {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            border-radius: var(--radius-lg);
-            background-color: var(--surface-alt); 
-        }
-
-        /* --- Featured Project --- */
+        /* --- Featured Projects Grid --- */
         .section-label {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -220,26 +215,45 @@
             background-color: var(--text-light);
         }
 
+        .featured-projects-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
         .featured-card {
             background-color: var(--surface-color);
             border-radius: var(--radius-lg);
-            padding: 4rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-            align-items: center;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .featured-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .featured-content h3 {
-            font-size: 2.25rem;
+            font-size: 1.75rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
         .featured-content h4 {
-            font-size: 1.1rem;
-            font-weight: 400;
+            font-size: 1rem;
+            font-weight: 500;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
@@ -247,49 +261,12 @@
         .featured-content p {
             color: var(--text-secondary);
             margin-bottom: 2rem;
+            font-size: 0.95rem;
         }
-
-        .featured-image img {
-            width: 100%;
-            border-radius: var(--radius-md);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* --- Four Column Details Grid --- */
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 6rem;
-            padding-bottom: 4rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .detail-item h5 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .detail-item ul {
-            list-style: none;
-        }
-
-        .detail-item ul li {
-            position: relative;
-            padding-left: 1rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .detail-item ul li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--text-light);
+        
+        .featured-content .btn-primary {
+            margin-top: auto; /* Pushes the button to the bottom of the card */
+            align-self: flex-start;
         }
 
         /* --- Bottom Split Sections --- */
@@ -405,16 +382,16 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero, .featured-card, .split-section {
+            .featured-projects-wrapper, .split-section {
                 grid-template-columns: 1fr;
             }
-            .hero-right { order: -1; }
-            .details-grid { grid-template-columns: 1fr 1fr; }
+            .featured-card {
+                padding: 2.5rem;
+            }
         }
         @media (max-width: 768px) {
-            .details-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            .hero-left h1 { font-size: 3rem; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
@@ -423,7 +400,7 @@
     <div class="container">
         <!-- Navigation -->
         <nav>
-            <a href="#" class="logo">Lovish Pandey</a>
+            <a href="#" class="logo">Portfolio</a>
             <div class="nav-links">
                 <a href="#projects">Projects</a>
                 <a href="#tech-stack">Tech Stack</a>
@@ -436,135 +413,100 @@
         <main>
             <!-- Hero Section -->
             <section class="hero">
-                <div class="hero-left">
+                <div>
                     <h4>Hi, I'm</h4>
                     <h1>Lovish Pandey</h1>
                     <h2>Senior Android Engineer</h2>
                     
                     <div class="badges">
-                        <span class="badge"><img src="assets/calendar.svg" alt="years" class="icon icon-sm"> 6.5+ years</span>
+                        <span class="badge"><img src="assets/calendar.svg" alt="years" class="icon icon-sm"> 7 years</span>
                         <span class="badge"><img src="assets/code.svg" alt="code" class="icon icon-sm"> Android</span>
                         <span class="badge"><img src="assets/kotlin.svg" alt="kotlin" class="icon icon-sm"> Kotlin</span>
                         <span class="badge"><img src="assets/car.svg" alt="automotive" class="icon icon-sm"> Automotive</span>
                         <span class="badge"><img src="assets/music.svg" alt="media" class="icon icon-sm"> Media</span>
                     </div>
 
-                    <!-- Description built to match the provided source reference -->
                     <p>I build scalable, high-performance Android applications with a focus on clean architecture, great user experiences and real-world impact.</p>
 
                     <div class="hero-actions">
                         <a href="#projects" class="btn-primary">View My Projects <img src="assets/arrow-right.svg" alt="arrow" class="icon icon-sm icon-gap-l" style="filter: brightness(0) invert(1);"></a>
                         <a href="https://github.com/lobxy" class="btn-secondary" target="_blank"><img src="assets/github.svg" alt="github" class="icon icon-sm icon-gap-r"> GitHub</a>
-                        <a href="https://www.linkedin.com/in/lovish-pandey-9aa9b5137/" class="btn-secondary"><img src="assets/linkedin.svg" alt="linkedin" class="icon icon-sm icon-gap-r"> LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/lovish-pandey-9aa9b5137/" class="btn-secondary" target="_blank"><img src="assets/linkedin.svg" alt="linkedin" class="icon icon-sm icon-gap-r"> LinkedIn</a>
                     </div>
-                </div>
-                <div class="hero-right">
-                    <img src="assets/hero.png" alt="App Showcase" class="hero-img" onerror="this.src='https://via.placeholder.com/500x600/f1f5f9/94a3b8?text=Hero+Image+Mockup'">
                 </div>
             </section>
 
-            <!-- Featured Project 1: Gaana -->
-            <div class="section-label" id="projects">Featured Project</div>
-            <section class="featured-card">
-                <div class="featured-content">
-                    <h3>Gaana</h3>
-                    <h4>Modular Android Auto and Android Automotive application for multiple OEMs</h4>
-                    <p>Built a scalable Android Automotive and Android Auto app that brings Gaana's music experience to cars, supporting multiple OEMs with a modular architecture.</p>
+            <!-- Featured Projects Side-by-Side Grid -->
+            <div class="section-label" id="projects">Featured Projects</div>
+            <div class="featured-projects-wrapper">
+                
+                <!-- Project 1: Gaana -->
+                <section class="featured-card">
+                    <!-- Icon placed at the start of the card -->
+                    <img src="assets/gaana.png" alt="Gaana Icon" class="app-icon" onerror="this.src='https://via.placeholder.com/80/e2e8f0/64748b?text=Gaana'">
                     
-                    <div class="badges" style="margin-bottom: 2.5rem;">
-                        <span class="badge">AAOS</span>
-                        <span class="badge"><img src="assets/android-auto.svg" alt="auto" class="icon icon-sm"> Android Auto</span>
-                        <span class="badge"><img src="assets/media-session.svg" alt="media" class="icon icon-sm"> MediaSession</span>
-                        <span class="badge"><img src="assets/car-app-library.svg" alt="car library" class="icon icon-sm"> Car App Library</span>
-                        <span class="badge"><img src="assets/kotlin.svg" alt="kotlin" class="icon icon-sm"> Kotlin</span>
+                    <div class="featured-content">
+                        <h3>Gaana</h3>
+                        <h4>Modular Android Auto and Android Automotive application</h4>
+                        <p>Built a scalable Android Automotive and Android Auto app that brings Gaana's music experience to cars, supporting multiple OEMs with a modular architecture.</p>
+                        
+                        <div class="badges" style="margin-bottom: 2.5rem; justify-content: flex-start;">
+                            <span class="badge">AAOS</span>
+                            <span class="badge"><img src="assets/android-auto.svg" alt="auto" class="icon icon-sm"> Auto</span>
+                            <span class="badge"><img src="assets/media-session.svg" alt="media" class="icon icon-sm"> Media</span>
+                            <span class="badge"><img src="assets/kotlin.svg" alt="kotlin" class="icon icon-sm"> Kotlin</span>
+                        </div>
+
+                        <a href="https://play.google.com/store/search?q=gaana+app&c=apps&hl=en_IN" target="_blank" class="btn-primary">View on Play Store <img src="assets/arrow-right.svg" alt="arrow" class="icon icon-sm icon-gap-l" style="filter: brightness(0) invert(1);"></a>
                     </div>
+                </section>
 
-                    <a href="https://play.google.com/store/search?q=gaana+app&c=apps&hl=en_IN" target="_blank" class="btn-primary" style="display: inline-flex;">View Case Study <img src="assets/arrow-right.svg" alt="arrow" class="icon icon-sm icon-gap-l" style="filter: brightness(0) invert(1);"></a>
-                </div>
-                <div class="featured-image">
-                    <img src="assets/gaana.png" alt="Gaana Automotive UI" onerror="this.src='https://via.placeholder.com/600x400/e2e8f0/64748b?text=Gaana+Screenshot'">
-                </div>
-            </section>
-
-            <!-- Case Study Grid for Gaana 
-            <section class="details-grid">
-                <div class="detail-item">
-                    <h5><img src="target.svg" alt="Problem" class="icon icon-md icon-gap-r"> The Problem</h5>
-                    <ul>
-                        <li>Support multiple OEMs with different car infotainment systems.</li>
-                        <li>Handle media playback, audio focus and vehicle restrictions.</li>
-                    </ul>
-                </div>
-                <div class="detail-item">
-                    <h5><img src="lightbulb.svg" alt="Solution" class="icon icon-md icon-gap-r"> My Solution</h5>
-                    <ul>
-                        <li>Designed a modular app architecture for easy OEM integration.</li>
-                        <li>Implemented media service using MediaBrowserServiceCompat.</li>
-                        <li>Handled CarUXRestrictions and audio focus scenarios.</li>
-                    </ul>
-                </div>
-                <div class="detail-item">
-                    <h5><img src="settings.svg" alt="Technical" class="icon icon-md icon-gap-r"> Technical Approach</h5>
-                    <ul>
-                        <li>MediaBrowserServiceCompat + MediaSessionCompat.</li>
-                        <li>Modular base layer with feature modules.</li>
-                        <li>Clean architecture with Kotlin + MVVM.</li>
-                    </ul>
-                </div>
-                <div class="detail-item">
-                    <h5><img src="chart.svg" alt="Impact" class="icon icon-md icon-gap-r"> Impact</h5>
-                    <ul>
-                        <li>Seamless experience across multiple OEMs (Thar Roxx, M210, M110, Bolero).</li>
-                        <li>Improved stability and maintainability of the codebase.</li>
-                        <li>Scalable foundation for future features.</li>
-                    </ul>
-                </div>
-            </section>-->
-
-            <!-- Featured Project 2: ActivBharat -->
-            <section class="featured-card">
-                <div class="featured-content">
-                    <h3>ActivBharat</h3>
-                    <h4>End-to-End Development, Architecture, & Publishing</h4>
-                    <p>Architected and developed this comprehensive fitness and marathon booking application entirely from scratch, handling everything from the initial codebase setup to final Play Store publication.</p>
+                <!-- Project 2: ActivBharat -->
+                <section class="featured-card">
+                    <!-- Icon placed at the start of the card -->
+                    <img src="assets/activbharat.png" alt="ActivBharat Icon" class="app-icon" onerror="this.src='https://via.placeholder.com/80/e2e8f0/64748b?text=ActivBharat'">
                     
-                    <div class="badges" style="margin-bottom: 2.5rem;">
-                        <span class="badge"><img src="assets/android.svg" alt="android" class="icon icon-sm"> Health Connect</span>
-                        <span class="badge"><img src="assets/code.svg" alt="compose" class="icon icon-sm"> Jetpack Compose</span>
-                        <span class="badge"><img src="assets/kotlin.svg" alt="kotlin" class="icon icon-sm"> Kotlin</span>
-                        <span class="badge"><img src="assets/target.svg" alt="payments" class="icon icon-sm"> Secure Payments</span>
-                    </div>
+                    <div class="featured-content">
+                        <h3>ActivBharat</h3>
+                        <h4>End-to-End Development, Architecture, & Publishing</h4>
+                        <p>Architected and developed this comprehensive fitness and marathon booking application entirely from scratch, handling everything from the initial codebase setup to final Play Store publication.</p>
+                        
+                        <div class="badges" style="margin-bottom: 2.5rem; justify-content: flex-start;">
+                            <span class="badge"><img src="assets/android.svg" alt="android" class="icon icon-sm"> Health</span>
+                            <span class="badge"><img src="assets/code.svg" alt="compose" class="icon icon-sm"> Compose</span>
+                            <span class="badge"><img src="assets/kotlin.svg" alt="kotlin" class="icon icon-sm"> Kotlin</span>
+                            <span class="badge"><img src="assets/target.svg" alt="payments" class="icon icon-sm"> Payments</span>
+                        </div>
 
-                    <a href="https://play.google.com/store/apps/details?id=com.enil.activbharat&hl=en_IN" target="_blank" class="btn-primary" style="display: inline-flex;">View on Google Play <img src="assets/arrow-right.svg" alt="arrow" class="icon icon-sm icon-gap-l" style="filter: brightness(0) invert(1);"></a>
-                </div>
-                <div class="featured-image">
-                    <img src="assets/activbharat.png" alt="ActivBharat UI" onerror="this.src='https://via.placeholder.com/600x400/e2e8f0/64748b?text=ActivBharat+Screenshot'">
-                </div>
-            </section>
+                        <a href="https://play.google.com/store/apps/details?id=com.enil.activbharat&hl=en_IN" target="_blank" class="btn-primary">View on Google Play <img src="assets/arrow-right.svg" alt="arrow" class="icon icon-sm icon-gap-l" style="filter: brightness(0) invert(1);"></a>
+                    </div>
+                </section>
+
+            </div>
 
             <!-- Bottom Data Sections -->
-            <div class="split-section" id="tech-stack" style="margin-top: 6rem; border-top: 1px solid var(--border-color); padding-top: 4rem;">
+            <div class="split-section" id="tech-stack" style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 4rem;">
                 <!-- Highlights -->
                 <div>
                     <div class="section-label">Engineering Highlights</div>
                     <div class="stats-grid" style="margin-top: 2rem;">
-    				<div class="stat-item">
-     				   <h3>40%</h3>
-      					  <p>Faster builds<br>Gradle optimization</p>
-    				</div>
-    				<div class="stat-item">
-       					<h3>37%</h3>
-        				<p>Smaller APK<br>ProGuard & R8 Analysis</p>
-    				</div>
-    				<div class="stat-item">
-      			  		<h4>Multi-OEM</h4>
-       					<p>Architecture<br>Automotive platform</p>
-    				</div>
-    				<div class="stat-item">
-        				<h4>Full Revamps</h4>
-       					<p>Modernization<br>Legacy codebases</p>
-   					</div>
-				</div>
+                    <div class="stat-item">
+                       <h3>40%</h3>
+                          <p>Faster builds<br>Gradle optimization</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>37%</h3>
+                        <p>Smaller APK<br>ProGuard & R8 Analysis</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Multi-OEM</h4>
+                        <p>Architecture<br>Automotive platform</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Full Revamps</h4>
+                        <p>Modernization<br>Legacy codebases</p>
+                    </div>
+                </div>
                 </div>
 
                 <!-- Expertise -->
